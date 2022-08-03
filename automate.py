@@ -10,6 +10,7 @@ from send_metric import *
 
 # define counter variable
 # useful for triggering some sort of alternative automation
+# for example, you can send a set of logs with a certain type of tag for a defined limit, then switch to a different tag
 counter = 0
 
 # get input from the user on what they want to do
