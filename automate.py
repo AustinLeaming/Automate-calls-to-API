@@ -7,11 +7,32 @@ import send_logs
 from send_logs import *
 import send_metric
 from send_metric import *
+from datetime import datetime
+import validate_api_key 
+from validate_api_key import *
 
 # define counter variable
 # useful for triggering some sort of alternative automation
 # for example, you can send a set of logs with a certain type of tag for a defined limit, then switch to a different tag
 counter = 0
+
+# define user inputs for functions
+get_function_script = 0
+function_frequency = 0
+
+# used to check if user has started a call before or not
+loop_count = 0
+
+# used to validate API, don't start script if the API key is bad
+def check_api():
+    validate_api_key.make_call()
+    if validate_api_key.response.valid == True:
+        next
+    else:
+        print("bad API")
+    time.sleep(.4)
+
+check_api()
 
 # get input from the user on what they want to do
 get_function_script = int(input("1. Logs 2. Metrics: "))
