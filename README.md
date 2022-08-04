@@ -21,3 +21,6 @@ to run script -> DD_SITE="datadoghq.com" DD_API_KEY="<API_KEY>" python3 automate
 - ~validate api key before running script~
 - ~include timestamps~
 - implement dynamic calls (make 5 calls in 5 seconds, 10 calls in 5 seconds, etc)
+- ~implement looping feature when stopping script~
+- enhance user experience
+
