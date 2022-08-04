@@ -17,8 +17,9 @@ def make_call():
             HTTPLogItem(
                 ddsource="Python",
                 hostname="Python script",
-                message="Hello World",
+                message="filled in tag",
                 service="payment",
+                env="test",
                 ddtags="env:test,location:denver"
             ),
         ]
@@ -28,5 +29,4 @@ def make_call():
     with ApiClient(configuration) as api_client:
         api_instance = LogsApi(api_client)
         response = api_instance.submit_log(content_encoding=ContentEncoding("deflate"), body=body)
-        print(response)
 

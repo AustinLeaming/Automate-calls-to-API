@@ -13,7 +13,7 @@ from datadog_api_client.v2.model.metric_series import MetricSeries
 
 response = "null"
 
-def make_metric_call():
+def metric_call():
     global response
     body = MetricPayload(
         series=[
@@ -40,5 +40,3 @@ def make_metric_call():
     with ApiClient(configuration) as api_client:
         api_instance = MetricsApi(api_client)
         response = api_instance.submit_metrics(body=body)
-
-        print(response)
