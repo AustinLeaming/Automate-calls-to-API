@@ -28,4 +28,4 @@ https://lucid.app/lucidchart/145c48d0-b05a-4d4c-b264-39c2fb4abf0c/edit?viewport_
 - implement dynamic calls (make 5 calls in 5 seconds, 10 calls in 5 seconds, etc)
 - ~implement looping feature when stopping script~
 - enhance user experience
-
+- install ddtrace and log api calls as traces
