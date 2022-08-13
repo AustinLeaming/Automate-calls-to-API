@@ -10,10 +10,12 @@ from datadog_api_client.v2.model.metric_payload import MetricPayload
 from datadog_api_client.v2.model.metric_point import MetricPoint
 from datadog_api_client.v2.model.metric_resource import MetricResource
 from datadog_api_client.v2.model.metric_series import MetricSeries
+import random
 
 response = "null"
 
 def metric_call():
+    randomNumber = round(random.random())
     global response
     body = MetricPayload(
         series=[
@@ -23,7 +25,8 @@ def metric_call():
                 type=MetricIntakeType(1),
                 points=[
                     MetricPoint(
-                        timestamp=int(datetime.now().timestamp())
+                        timestamp=int(datetime.now().timestamp()),
+                        value=randomNumber,
                     ),
                 ],
                 resources=[

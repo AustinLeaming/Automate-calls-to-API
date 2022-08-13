@@ -10,6 +10,11 @@ from send_metric import *
 from datetime import datetime
 import validate_api_key 
 from validate_api_key import *
+from ddtrace import config, patch_all
+import random
+# from ddtrace.opentracer import Tracer, set_global_tracer
+
+patch_all()
 
 # define counter variable
 # useful for triggering some sort of alternative automation
@@ -61,10 +66,37 @@ def automate_log_script():
     print("Press CTRL+C to break if no errors are found")
     print("Valid responses look like -> {}")
     time.sleep(.8)
+    log_sub_input = int(input("1. Normal Log Post 2. Random value logs "))
+    if log_sub_input == 1:
+        normal_logs()
+    elif log_sub_input == 2:
+        random_logs()
+    else:
+        print("sub function not found")
+
+def random_logs():
+    print("Running a randomized log call...")
+    try:
+        while True:
+            time.sleep(function_frequency)
+            send_logs.make_call_random_service()
+            if send_logs.response == {}:
+                now = datetime.now().time()
+                print(send_logs.response, "timestamp:", now)
+            else:  
+                print("Error found, stopping script")
+                break 
+    except KeyboardInterrupt:
+        print("")
+        start_script()
+
+def normal_logs():
+    print("Running a normal log call...")
     try:
         while True:
             time.sleep(function_frequency)
             send_logs.make_call()
+            print(send_logs.response,"in automate")
             if send_logs.response == {}:
                 now = datetime.now().time()
                 print(send_logs.response, "timestamp:", now)
